@@ -1,35 +1,21 @@
 <script lang="ts">
-	import { Modal } from '@skeletonlabs/skeleton-svelte';
-
-	let openState = $state(false);
-
-	function modalClose() {
-		openState = false;
-	}
+	import { Dialog } from '@skeletonlabs/skeleton-svelte';
 </script>
 
-<Modal
-	open={openState}
-	onOpenChange={(e) => (openState = e.open)}
-	triggerBase="btn preset-tonal"
-	contentBase="card bg-surface-100-900 p-4 space-y-4 shadow-xl max-w-screen-sm"
-	backdropClasses="backdrop-blur-sm"
->
-	{#snippet trigger()}Open Modal{/snippet}
-	{#snippet content()}
-		<header class="flex justify-between">
-			<h2 class="h2">Modal Example</h2>
-		</header>
-		<article>
-			<p class="opacity-60">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, ab adipisci. Libero cumque
-				sunt quis error veritatis amet, expedita voluptatem. Quos repudiandae consequuntur
-				voluptatem et dicta quas, reprehenderit velit excepturi?
-			</p>
-		</article>
-		<footer class="flex justify-end gap-4">
-			<button type="button" class="btn preset-tonal" onclick={modalClose}>Cancel</button>
-			<button type="button" class="btn preset-filled" onclick={modalClose}>Confirm</button>
-		</footer>
-	{/snippet}
-</Modal>
+<Dialog>
+	<Dialog.Trigger class="btn preset-filled">Trigger</Dialog.Trigger>
+	<!-- Animating fade in/out -->
+	<Dialog.Backdrop
+		class="fixed inset-0 z-50 bg-surface-50-950/50 data-[state=open]:animate-[fade-in_100ms_ease-in-out]"
+	/>
+	<Dialog.Positioner class="fixed inset-0 z-50 flex items-center justify-center">
+		<!-- Animating fly in/out -->
+		<Dialog.Content
+			class="w-md space-y-2 card bg-surface-100-900 p-4 shadow-xl data-[state=open]:animate-[slide-out_100ms_ease-in-out]"
+		>
+			<Dialog.Title class="text-2xl font-bold">Hello World</Dialog.Title>
+			<Dialog.Description>This is an example of a basic dialog.</Dialog.Description>
+			<Dialog.CloseTrigger class="btn preset-tonal">Close</Dialog.CloseTrigger>
+		</Dialog.Content>
+	</Dialog.Positioner>
+</Dialog>

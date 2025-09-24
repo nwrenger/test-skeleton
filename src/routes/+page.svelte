@@ -20,12 +20,13 @@
 		</header>
 		<article>
 			<p class="opacity-60">
-				When closing this modal, an animation will play. Everything works as expected!
+				When closing this modal via clicking outside or <kbd class="kbd">esc</kbd>, an animation
+				will play. Everything works as expected!
 			</p>
 		</article>
 		<footer class="flex justify-end gap-4">
-			<button type="button" class="btn preset-tonal" onclick={modalClose}>Cancel</button>
-			<button type="button" class="btn preset-filled" onclick={modalClose}>Confirm</button>
+			<button type="button" class="btn preset-tonal" disabled onclick={modalClose}>Cancel</button>
+			<button type="button" class="btn preset-filled" disabled onclick={modalClose}>Confirm</button>
 		</footer>
 	{/snippet}
 </Modal>
